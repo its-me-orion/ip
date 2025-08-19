@@ -69,25 +69,35 @@ public class Scribbles {
         System.out.println(Scribbles.WELCOMEMSG);
         Scribbles scribble = new Scribbles();
         Scanner scanner = new Scanner(System.in);
-        String command = "";
+        String[] tokens = {""};
 
-        while (!command.equalsIgnoreCase("bye")) {
+        while (!tokens[0].equalsIgnoreCase("bye")) {
             System.out.print("> ");
-            command = scanner.nextLine();
+            String userInput = scanner.nextLine();
+            tokens = userInput.split(" ");
 
-            if (command.equalsIgnoreCase("bye")) {
+            if (tokens[0].equalsIgnoreCase("bye")) {
                 break;
             }
 
-            if (command.equalsIgnoreCase("list")) {
+            if (tokens[0].equalsIgnoreCase("list")) {
                 scribble.displayList();
                 continue;
             }
 
-            scribble.addTask(command);
+            if (tokens[0].equalsIgnoreCase("mark")) {
+                scribble.markTask(Integer.parseInt(tokens[1]));
+                continue;
+            }
+
+            if (tokens[0].equalsIgnoreCase("unmark")) {
+                scribble.unmarkTask(Integer.parseInt(tokens[1]));
+                continue;
+            }
+
+            scribble.addTask(userInput);
         }
 
         System.out.println(Scribbles.EXITMSG);
-
     }
 }
