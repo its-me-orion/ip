@@ -42,7 +42,7 @@ public class Scribbles {
     public void displayList() {
         System.out.println("    <----------------------------------------------->");
         for (int i = 0; i < this.taskList.size(); i++) {
-            System.out.printf("    %d. %s%n", i + 1, this.taskList.get(i).getDesc());
+            System.out.printf("    %d. %s%n", i + 1, this.taskList.get(i).toString());
         }
         System.out.println("    <----------------------------------------------->");
     }
