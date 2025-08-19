@@ -39,6 +39,24 @@ public class Scribbles {
         System.out.println("    <----------------------------------------------->");
     }
 
+    public void markTask(int n) {
+        Task task = this.taskList.get(n - 1);
+        task.mark();
+        System.out.println("    <----------------------------------------------->");
+        System.out.println("    Hoorah! I shall mark this task as completed! XD");
+        System.out.printf("    %s%n", task.toString());
+        System.out.println("    <----------------------------------------------->");
+    }
+
+    public void unmarkTask(int n) {
+        Task task = this.taskList.get(n - 1);
+        task.unmark();
+        System.out.println("    <----------------------------------------------->");
+        System.out.println("    Aw man.. I shall unmark this task for you. D:");
+        System.out.printf("    %s%n", task.toString());
+        System.out.println("    <----------------------------------------------->");
+    }
+
     public void displayList() {
         System.out.println("    <----------------------------------------------->");
         for (int i = 0; i < this.taskList.size(); i++) {
