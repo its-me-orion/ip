@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,46 +24,48 @@ public class Scribbles {
         this.taskList = new ArrayList<Task>();
     }
 
-    public void echo(String cmd) {
-        String output = """
-                    <----------------------------------------------->
-                    %s
-                    <----------------------------------------------->
-                """.formatted(cmd);
-        System.out.println(output);
+    // Overloaded - accepts single or multiple string args (does not require list conversion as it is done here)
+    private void echo(String... lines) {
+        echo(Arrays.asList(lines));
+    }
+    
+    private void echo(List<String> lines) {
+        System.out.println("    <----------------------------------------------->");
+        for (String line : lines) {
+            System.out.printf("    %s%n", line);
+        }
+        System.out.println("    <----------------------------------------------->");
     }
 
     public void addTask(String desc) {
         taskList.add(new Task(desc));
-        System.out.println("    <----------------------------------------------->");
-        System.out.printf("    I have added the task '%s' for you! :3%n", desc);
-        System.out.println("    <----------------------------------------------->");
+        echo("I have added the task '%s' for you! :3".formatted(desc));
     }
 
     public void markTask(int n) {
         Task task = this.taskList.get(n - 1);
         task.mark();
-        System.out.println("    <----------------------------------------------->");
-        System.out.println("    Hoorah! I shall mark this task as completed! XD");
-        System.out.printf("    %s%n", task.toString());
-        System.out.println("    <----------------------------------------------->");
+        echo(
+      "Hoorah! I shall mark this task as completed! XD",
+            "  %s".formatted(task.toString())
+        );
     }
 
     public void unmarkTask(int n) {
         Task task = this.taskList.get(n - 1);
         task.unmark();
-        System.out.println("    <----------------------------------------------->");
-        System.out.println("    Aw man.. I shall unmark this task for you. D:");
-        System.out.printf("    %s%n", task.toString());
-        System.out.println("    <----------------------------------------------->");
+        echo(
+      "Aw man.. I shall unmark this task for you. D:",
+            "  %s".formatted(task.toString())
+        );
     }
 
     public void displayList() {
-        System.out.println("    <----------------------------------------------->");
-        for (int i = 0; i < this.taskList.size(); i++) {
-            System.out.printf("    %d. %s%n", i + 1, this.taskList.get(i).toString());
+        List<String> tasks = new ArrayList<>();
+        for (int i = 0; i < taskList.size(); i++) {
+            tasks.add("%d. %s".formatted(i + 1, taskList.get(i).toString()));
         }
-        System.out.println("    <----------------------------------------------->");
+        echo(tasks);
     }
 
     public static void main(String[] args) {
