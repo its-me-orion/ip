@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -15,6 +17,12 @@ public class Scribbles {
             '----------------------------------------------------'
             """;
 
+    private List<Task> taskList;
+
+    public Scribbles() {
+        this.taskList = new ArrayList<Task>();
+    }
+
     public void echo(String cmd) {
         String output = """
                     <----------------------------------------------->
@@ -22,6 +30,21 @@ public class Scribbles {
                     <----------------------------------------------->
                 """.formatted(cmd);
         System.out.println(output);
+    }
+
+    public void addTask(String desc) {
+        taskList.add(new Task(desc));
+        System.out.println("    <----------------------------------------------->");
+        System.out.printf("    I have added the task '%s' for you! :3%n", desc);
+        System.out.println("    <----------------------------------------------->");
+    }
+
+    public void displayList() {
+        System.out.println("    <----------------------------------------------->");
+        for (int i = 0; i < this.taskList.size(); i++) {
+            System.out.printf("    %d. %s%n", i + 1, this.taskList.get(i).getDesc());
+        }
+        System.out.println("    <----------------------------------------------->");
     }
 
     public static void main(String[] args) {
