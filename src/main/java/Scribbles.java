@@ -51,13 +51,22 @@ public class Scribbles {
         System.out.println(Scribbles.WELCOMEMSG);
         Scribbles scribble = new Scribbles();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("> ");
+        String command = "";
 
-        String command = scanner.nextLine();
         while (!command.equalsIgnoreCase("bye")) {
-            scribble.echo(command);
             System.out.print("> ");
             command = scanner.nextLine();
+
+            if (command.equalsIgnoreCase("bye")) {
+                break;
+            }
+
+            if (command.equalsIgnoreCase("list")) {
+                scribble.displayList();
+                continue;
+            }
+
+            scribble.addTask(command);
         }
 
         System.out.println(Scribbles.EXITMSG);
