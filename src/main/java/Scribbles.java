@@ -93,7 +93,7 @@ public class Scribbles {
         while (!tokens[0].equalsIgnoreCase("bye")) {
             System.out.print("> ");
             String userInput = scanner.nextLine();
-            tokens = userInput.split(" ");
+            tokens = userInput.split(" ", 2);  // Split only first command from the rest
 
             if (tokens[0].equalsIgnoreCase("bye")) {
                 break;
@@ -104,6 +104,7 @@ public class Scribbles {
                 continue;
             }
 
+            // Modify properties of task
             if (tokens[0].equalsIgnoreCase("mark")) {
                 scribble.markTask(Integer.parseInt(tokens[1]));
                 continue;
@@ -114,7 +115,34 @@ public class Scribbles {
                 continue;
             }
 
-            scribble.addTask(userInput);
+            // Creation of different tasks
+            if (tokens[0].equalsIgnoreCase("todo")) {
+                scribble.addToDoTask(tokens[1]);
+                continue;
+            }
+
+            if (tokens[0].equalsIgnoreCase("deadline")) {
+                String[] content = tokens[1].split(" /by ", 2);
+                // Might be redundant to declare and use the variable immediately
+                // but ensures clarity of what content contains
+                String desc = content[0];
+                String by = content[1];
+                scribble.addDeadlineTask(desc, by);
+                continue;
+            }
+
+            if (tokens[0].equalsIgnoreCase("event")) {
+                String[] content = tokens[1].split(" /from ", 2);
+                String[] fromTo = content[1].split(" /to ", 2);
+                String desc = content[0];
+                String from = fromTo[0];
+                String to = fromTo[1];
+                scribble.addEventTask(desc, from, to);
+                continue;
+            }
+
+            // Tentatively echo inputs that is not associated with any commands
+            scribble.echo(userInput);
         }
 
         System.out.println(Scribbles.EXITMSG);
