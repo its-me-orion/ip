@@ -84,6 +84,16 @@ public class Scribbles {
         );
     }
 
+    public void deleteTask(int n) {
+        Task task = this.taskList.get(n - 1);
+        this.taskList.remove(n - 1);
+        echo (
+      "Orkay! I have banished this task from existence:",
+            "  %s".formatted(task.toString()),
+            "You now have %s task(s) remaining! ^_^".formatted(this.taskList.size())
+        );
+    }
+
     public void displayList() {
         List<String> tasks = new ArrayList<>();
         for (int i = 0; i < taskList.size(); i++) {
@@ -125,6 +135,11 @@ public class Scribbles {
 
                 if (tokens[0].equalsIgnoreCase("unmark")) {
                     scribble.unmarkTask(Integer.parseInt(tokens[1]));
+                    continue;
+                }
+
+                if (tokens[0].equalsIgnoreCase("delete")) {
+                    scribble.deleteTask(Integer.parseInt(tokens[1]));
                     continue;
                 }
 
