@@ -1,7 +1,15 @@
+// Utils
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+// Exceptions
+import ScribblesExceptions.InvalidParamException;
+import ScribblesExceptions.MissingArgumentException;
+import ScribblesExceptions.MissingDescriptionException;
+import ScribblesExceptions.ScribblesException;
+import ScribblesExceptions.UnknownCommandException;
 
 
 public class Scribbles {
@@ -84,6 +92,10 @@ public class Scribbles {
         echo(tasks);
     }
 
+    public void displayError(String msg) {
+        echo(msg);
+    }
+
     public static void main(String[] args) {
         System.out.println(Scribbles.WELCOMEMSG);
         Scribbles scribble = new Scribbles();
@@ -93,56 +105,97 @@ public class Scribbles {
         while (!tokens[0].equalsIgnoreCase("bye")) {
             System.out.print("> ");
             String userInput = scanner.nextLine();
-            tokens = userInput.split(" ", 2);  // Split only first command from the rest
+            try {
+                tokens = userInput.split(" ", 2);  // Split only first command from the rest
 
-            if (tokens[0].equalsIgnoreCase("bye")) {
-                break;
+                if (tokens[0].equalsIgnoreCase("bye")) {
+                    break;
+                }
+
+                if (tokens[0].equalsIgnoreCase("list")) {
+                    scribble.displayList();
+                    continue;
+                }
+
+                // Modify properties of taskList
+                if (tokens[0].equalsIgnoreCase("mark")) {
+                    scribble.markTask(Integer.parseInt(tokens[1]));
+                    continue;
+                }
+
+                if (tokens[0].equalsIgnoreCase("unmark")) {
+                    scribble.unmarkTask(Integer.parseInt(tokens[1]));
+                    continue;
+                }
+
+                // Creation of different tasks
+                if (tokens[0].equalsIgnoreCase("todo")) {
+                    if (tokens.length == 1 || tokens[1].trim().isEmpty()) {
+                        throw new MissingDescriptionException();
+                    }
+                    scribble.addToDoTask(tokens[1]);
+                    continue;
+                }
+
+                if (tokens[0].equalsIgnoreCase("deadline")) {
+                    // Messy exception handling at the moment and some exception handling are duplicated
+                    if (tokens.length == 1 || tokens[1].trim().isEmpty()) {
+                        throw new MissingDescriptionException();
+                    }
+                    if (!tokens[1].contains(" /by ")) {
+                        throw new InvalidParamException("/by");
+                    }
+
+                    String[] content = tokens[1].split(" /by ", 2);
+                    if (content.length == 1 || content[1].trim().isEmpty()) {
+                        throw new MissingArgumentException("/by");
+                    }
+                    // Might be redundant to declare and use the variable immediately
+                    // but ensures clarity of what content contains
+                    String desc = content[0];
+                    String by = content[1];
+                    scribble.addDeadlineTask(desc, by);
+                    continue;
+                }
+
+                if (tokens[0].equalsIgnoreCase("event")) {
+                    if (tokens.length == 1 || tokens[1].trim().isEmpty()) {
+                        throw new MissingDescriptionException();
+                    }
+
+                    List<String> missingParams = new ArrayList<>();
+                    if (!tokens[1].contains(" /from ")) {
+                        missingParams.add("/from");
+                    }
+                    if (!tokens[1].contains(" /to ")) {
+                        missingParams.add("/to");
+                    }
+                    if (!missingParams.isEmpty()) {
+                        throw new InvalidParamException(String.join(", ", missingParams));
+                    }
+
+                    String[] content = tokens[1].split(" /from ", 2);
+                    if (content.length == 1 || content[1].trim().isEmpty() || content[1].trim().startsWith("/to")) {
+                        throw new MissingArgumentException("/from");
+                    }
+
+                    String[] fromTo = content[1].split(" /to ", 2);
+                    if (fromTo.length == 1 || fromTo[1].trim().isEmpty()) {
+                        throw new MissingArgumentException("/to");
+                    }
+
+                    String desc = content[0];
+                    String from = fromTo[0];
+                    String to = fromTo[1];
+                    scribble.addEventTask(desc, from, to);
+                    continue;
+                }
+
+                throw new UnknownCommandException(userInput);
+
+            } catch (ScribblesException e) {
+                scribble.displayError(e.getMessage());
             }
-
-            if (tokens[0].equalsIgnoreCase("list")) {
-                scribble.displayList();
-                continue;
-            }
-
-            // Modify properties of task
-            if (tokens[0].equalsIgnoreCase("mark")) {
-                scribble.markTask(Integer.parseInt(tokens[1]));
-                continue;
-            }
-
-            if (tokens[0].equalsIgnoreCase("unmark")) {
-                scribble.unmarkTask(Integer.parseInt(tokens[1]));
-                continue;
-            }
-
-            // Creation of different tasks
-            if (tokens[0].equalsIgnoreCase("todo")) {
-                scribble.addToDoTask(tokens[1]);
-                continue;
-            }
-
-            if (tokens[0].equalsIgnoreCase("deadline")) {
-                String[] content = tokens[1].split(" /by ", 2);
-                // Might be redundant to declare and use the variable immediately
-                // but ensures clarity of what content contains
-                String desc = content[0];
-                String by = content[1];
-                scribble.addDeadlineTask(desc, by);
-                continue;
-            }
-
-            if (tokens[0].equalsIgnoreCase("event")) {
-                String[] content = tokens[1].split(" /from ", 2);
-                String[] fromTo = content[1].split(" /to ", 2);
-                String desc = content[0];
-                String from = fromTo[0];
-                String to = fromTo[1];
-                scribble.addEventTask(desc, from, to);
-                continue;
-            }
-
-            // Tentatively echo inputs that is not associated with any commands
-            scribble.echo(userInput);
         }
 
         System.out.println(Scribbles.EXITMSG);
