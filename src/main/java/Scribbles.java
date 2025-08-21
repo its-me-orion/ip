@@ -28,7 +28,7 @@ public class Scribbles {
     private void echo(String... lines) {
         echo(Arrays.asList(lines));
     }
-    
+
     private void echo(List<String> lines) {
         System.out.println("    <----------------------------------------------->");
         for (String line : lines) {
@@ -37,9 +37,25 @@ public class Scribbles {
         System.out.println("    <----------------------------------------------->");
     }
 
-    public void addTask(String desc) {
-        taskList.add(new Task(desc));
-        echo("I have added the task '%s' for you! :3".formatted(desc));
+    /*
+     * Maybe there is a way to utilise method overloading instead, but in the event
+     * there are tasks with same method signature it becomes problematic.
+     * Tasks that share the same method signature would require logic to differentiate
+     * within the method itself as well
+     */
+    public void addToDoTask(String desc) {
+        taskList.add(new ToDoTask(desc));
+        echo("I have added a todo task '%s' for you! :3".formatted(desc));
+    }
+
+    public void addDeadlineTask(String desc, String by) {
+        taskList.add(new DeadlineTask(desc, by));
+        echo("I have added a deadline task '%s' for you! :3".formatted(desc));
+    }
+
+    public void addEventTask(String desc, String from, String to) {
+        taskList.add(new EventTask(desc, from, to));
+        echo("I have added an event task '%s' for you! :3".formatted(desc));
     }
 
     public void markTask(int n) {
