@@ -7,13 +7,24 @@ import scribbles.tasklist.TaskList;
 import scribbles.Scribbles;
 import scribbles.ui.Ui;
 
+/**
+ * Provides the command logic to delete a specified task.
+ */
 public class DeleteCommand extends Command {
     private final int index;
 
+    /**
+     * Constructs a command to delete a specified task.
+     *
+     * @param index Task index number to delete from taskList.
+     */
     public DeleteCommand(int index) {
         this.index = index;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
         try {
