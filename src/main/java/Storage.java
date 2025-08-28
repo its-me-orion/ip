@@ -80,6 +80,9 @@ public class Storage {
             System.out.println("A task data is found to be corrupted from save: " + e.getMessage());
             System.out.println("Skipped loading that task");
             return null;
+        } catch (Exception e) {
+            System.out.println("Unknown data found: " + e.getMessage());
+            return null;
         }
     }
 }
