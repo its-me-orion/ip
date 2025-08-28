@@ -7,13 +7,18 @@ import scribbles.storage.Storage;
 import scribbles.tasklist.TaskList;
 import scribbles.ui.Ui;
 
-
+/**
+ * Provides the main entry to run and exit Scribbles
+ */
 public class Scribbles {
 
     private Storage storage;
     private TaskList taskList;
     private boolean isRunning = false;
 
+    /**
+     * Initialises the storage and task list of Scribbles.
+     */
     public Scribbles() {
         this.storage = new Storage();
         try {
@@ -24,10 +29,16 @@ public class Scribbles {
         }
     }
 
+    /**
+     * Stops Scribbles from running during run().
+     */
     public void exit() {
         this.isRunning = false;
     }
 
+    /**
+     * Runs the main logic flow for Scribbles.
+     */
     public void run() {
         this.isRunning = true;
         Ui.displayWelcomeMsg();
