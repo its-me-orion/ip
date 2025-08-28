@@ -4,15 +4,32 @@ import java.time.LocalDateTime;
 
 import scribbles.parser.Parser;
 
+/**
+ * Provides the properties of a deadline task.
+ */
 public class DeadlineTask extends Task {
     private final String LABEL = "D";
     private final LocalDateTime by;
 
+    /**
+     * Constructs a deadline task.
+     *
+     * @param desc Description of the task.
+     * @param by Deadline of the task to complete by.
+     */
     public DeadlineTask(String desc, LocalDateTime by) {
         super(desc);
         this.by = by;
     }
 
+    /**
+     * Constructs a deadline task that is either
+     * complete or incomplete.
+     *
+     * @param desc Description of the task.
+     * @param by Deadline of the task to complete by.
+     * @param isDone Whether the task is completed or not.
+     */
     public DeadlineTask(String desc, LocalDateTime by, boolean isDone) {
         super(desc, isDone);
         this.by = by;
@@ -22,6 +39,9 @@ public class DeadlineTask extends Task {
         return "(by: %s)".formatted(this.by.format(Parser.PRINT_FORMAT));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String encode() {
         return "%s | %s | %s".formatted(LABEL, super.encode()
