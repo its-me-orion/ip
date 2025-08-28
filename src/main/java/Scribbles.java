@@ -27,9 +27,11 @@ public class Scribbles {
             """;
 
     private List<Task> taskList;
+    private Storage storage;
 
     public Scribbles() {
-        this.taskList = new ArrayList<Task>();
+        this.storage = new Storage();
+        this.taskList = storage.loadFile();
     }
 
     // Overloaded - accepts single or multiple string args (does not require list conversion as it is done here)
@@ -54,16 +56,19 @@ public class Scribbles {
     public void addToDoTask(String desc) {
         taskList.add(new ToDoTask(desc));
         echo("I have added a todo task '%s' for you! :3".formatted(desc));
+        this.saveData();
     }
 
     public void addDeadlineTask(String desc, String by) {
         taskList.add(new DeadlineTask(desc, by));
         echo("I have added a deadline task '%s' for you! :3".formatted(desc));
+        this.saveData();
     }
 
     public void addEventTask(String desc, String from, String to) {
         taskList.add(new EventTask(desc, from, to));
         echo("I have added an event task '%s' for you! :3".formatted(desc));
+        this.saveData();
     }
 
     public void markTask(int n) {
@@ -73,6 +78,7 @@ public class Scribbles {
       "Hoorah! I shall mark this task as completed! XD",
             "  %s".formatted(task.toString())
         );
+        this.saveData();
     }
 
     public void unmarkTask(int n) {
@@ -82,6 +88,7 @@ public class Scribbles {
       "Aw man.. I shall unmark this task for you. D:",
             "  %s".formatted(task.toString())
         );
+        this.saveData();
     }
 
     public void deleteTask(int n) {
@@ -92,6 +99,11 @@ public class Scribbles {
             "  %s".formatted(task.toString()),
             "You now have %s task(s) remaining! ^_^".formatted(this.taskList.size())
         );
+        this.saveData();
+    }
+
+    public void saveData() {
+        this.storage.saveFile(this.taskList);
     }
 
     public void displayList() {
@@ -119,6 +131,7 @@ public class Scribbles {
                 tokens = userInput.split(" ", 2);  // Split only first command from the rest
 
                 if (tokens[0].equalsIgnoreCase("bye")) {
+                    scribble.saveData();
                     break;
                 }
 
