@@ -1,4 +1,7 @@
 // Utils
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -182,6 +185,7 @@ public class Scribbles {
                     // but ensures clarity of what content contains
                     String desc = content[0];
                     String by = content[1];
+                    LocalDateTime.parse(by, Task.INPUT_FORMAT);
                     scribble.addDeadlineTask(desc, by);
                     continue;
                 }
@@ -215,12 +219,16 @@ public class Scribbles {
                     String desc = content[0];
                     String from = fromTo[0];
                     String to = fromTo[1];
+                    LocalDateTime.parse(from, Task.INPUT_FORMAT);
+                    LocalDateTime.parse(to, Task.INPUT_FORMAT);
                     scribble.addEventTask(desc, from, to);
                     continue;
                 }
 
                 throw new UnknownCommandException(userInput);
 
+            } catch (DateTimeParseException e) {
+                scribble.displayError("Invalid datetime format :(, please use d/M/yyyy HHmm format");
             } catch (ScribblesException e) {
                 scribble.displayError(e.getMessage());
             }
