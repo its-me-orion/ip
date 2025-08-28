@@ -1,3 +1,5 @@
+package scribbles.task;
+
 public class ToDoTask extends Task {
     private final String LABEL = "T";
 

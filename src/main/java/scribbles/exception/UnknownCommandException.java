@@ -1,4 +1,4 @@
-package ScribblesExceptions;
+package scribbles.exception;
 
 // Error message include the command (unknown) that was being attempted
 public class UnknownCommandException extends ScribblesException {

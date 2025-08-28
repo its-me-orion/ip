@@ -1,4 +1,4 @@
-package ScribblesExceptions;
+package scribbles.exception;
 
 // Error occurs when required params are not fulfilled either missing or wrong name
 public class InvalidParamException extends ScribblesException {
