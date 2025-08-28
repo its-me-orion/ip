@@ -2,30 +2,34 @@ package scribbles.task;
 
 import java.time.LocalDateTime;
 
+import scribbles.parser.Parser;
+
 public class EventTask extends Task {
     private final String LABEL = "E";
     private final LocalDateTime from;
     private final LocalDateTime to;
 
-    public EventTask(String desc, String from, String to) {
+    public EventTask(String desc, LocalDateTime from, LocalDateTime to) {
         super(desc);
-        this.from = LocalDateTime.parse(from, INPUT_FORMAT);
-        this.to = LocalDateTime.parse(to, INPUT_FORMAT);
+        this.from = from;
+        this.to = to;
     }
 
-    public EventTask(String desc, String from, String to, boolean isDone) {
+    public EventTask(String desc, LocalDateTime from, LocalDateTime to, boolean isDone) {
         super(desc, isDone);
-        this.from = LocalDateTime.parse(from, INPUT_FORMAT);
-        this.to = LocalDateTime.parse(to, INPUT_FORMAT);
+        this.from = from;
+        this.to = to;
     }
 
     private String getFromTo() {
-        return "(from: %s to: %s)".formatted(this.from.format(PRINT_FORMAT), this.to.format(PRINT_FORMAT));
+        return "(from: %s to: %s)".formatted(this.from.format(Parser.PRINT_FORMAT)
+                , this.to.format(Parser.PRINT_FORMAT));
     }
 
     @Override
     public String encode() {
-        return "%s | %s | %s | %s".formatted(LABEL, super.encode(), this.from.format(INPUT_FORMAT), this.to.format(INPUT_FORMAT));
+        return "%s | %s | %s | %s".formatted(LABEL, super.encode()
+                , this.from.format(Parser.INPUT_FORMAT), this.to.format(Parser.INPUT_FORMAT));
     }
 
     @Override

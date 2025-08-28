@@ -3,8 +3,6 @@ package scribbles.task;
 import java.time.format.DateTimeFormatter;
 
 public abstract class Task {
-    public static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
-    public static final DateTimeFormatter PRINT_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma");
     private final String desc;
     private boolean isDone;
 

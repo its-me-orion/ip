@@ -4,21 +4,37 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import scribbles.exception.ScribblesException;
+import scribbles.parser.Parser;
 import scribbles.task.DeadlineTask;
 import scribbles.task.EventTask;
 import scribbles.task.Task;
 import scribbles.task.ToDoTask;
+import scribbles.tasklist.TaskList;
 
 public class Storage {
-    private static final String FILE_NAME = "ScribblesData.txt";
-    private static final String DIRECTORY = "./data/";
-    private static final String FILE_PATH = DIRECTORY + FILE_NAME;
+    private final String FILE_NAME;
+    private final String DIRECTORY;
+    private final String FILE_PATH;
 
-    public ArrayList<Task> loadFile() {
+    public Storage() {
+        this.FILE_NAME = "ScribblesData.txt";
+        this.DIRECTORY = "./data/";
+        this.FILE_PATH = DIRECTORY + FILE_NAME;
+    }
+
+    public Storage(String filename, String dir) {
+        this.FILE_NAME = filename;
+        this.DIRECTORY = dir;
+        this.FILE_PATH = DIRECTORY + FILE_NAME;
+    }
+
+    public ArrayList<Task> loadFile() throws ScribblesException {
         ArrayList<Task> tasks = new ArrayList<Task>();
         File file = new File(FILE_PATH);
         File directory = new File(DIRECTORY);
@@ -43,15 +59,16 @@ public class Storage {
             }
             sc.close();
         } catch (FileNotFoundException e) {
-            System.out.println("scribbles.ui.Scribbles data not found: " + e.getMessage());
+            throw new ScribblesException("scribbles.Scribbles data not found: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Error loading file: " + e.getMessage());
+            throw new ScribblesException("Error loading file: " + e.getMessage());
         }
 
         return tasks;
     }
 
-    public void saveFile(List<Task> tasks) {
+    public void saveFile(TaskList taskList) {
+        List<Task> tasks = taskList.getTaskList();
         try {
             FileWriter fw = new FileWriter(FILE_PATH);
             for (Task task : tasks) {
@@ -74,11 +91,11 @@ public class Storage {
             case "T":
                 return new ToDoTask(desc, isDone);
             case "D":
-                String by = tokens[3];
+                LocalDateTime by = Parser.parseDateTime(tokens[3]);
                 return new DeadlineTask(desc, by, isDone);
             case "E":
-                String from = tokens[3];
-                String to = tokens[4];
+                LocalDateTime from = Parser.parseDateTime(tokens[3]);
+                LocalDateTime to = Parser.parseDateTime(tokens[4]);
                 return new EventTask(desc, from, to, isDone);
             default:
                 return null;
