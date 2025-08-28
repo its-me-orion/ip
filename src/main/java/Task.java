@@ -7,6 +7,11 @@ public abstract class Task {
         this.isDone = false;
     }
 
+    public Task(String desc, boolean isDone) {
+        this.desc = desc;
+        this.isDone = isDone;
+    }
+
     public String getDesc() {
         return this.desc;
     }
@@ -22,6 +27,10 @@ public abstract class Task {
 
     public void unmark() {
         this.isDone = false;
+    }
+
+    public String encode() {
+        return "%s | %s".formatted((isDone ? "1" : "0"), this.desc);
     }
 
     @Override
