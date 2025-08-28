@@ -1,4 +1,4 @@
-package ScribblesExceptions;
+package scribbles.exception;
 
 public class MissingArgumentException extends ScribblesException {
     public MissingArgumentException(String... params) {

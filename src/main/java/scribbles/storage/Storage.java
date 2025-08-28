@@ -1,3 +1,5 @@
+package scribbles.storage;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
@@ -5,6 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import scribbles.task.DeadlineTask;
+import scribbles.task.EventTask;
+import scribbles.task.Task;
+import scribbles.task.ToDoTask;
 
 public class Storage {
     private static final String FILE_NAME = "ScribblesData.txt";
@@ -36,7 +43,7 @@ public class Storage {
             }
             sc.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Scribbles data not found: " + e.getMessage());
+            System.out.println("scribbles.ui.Scribbles data not found: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("Error loading file: " + e.getMessage());
         }

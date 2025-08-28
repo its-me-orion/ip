@@ -1,4 +1,4 @@
-package ScribblesExceptions;
+package scribbles.exception;
 
 public class MissingDescriptionException extends ScribblesException {
     public MissingDescriptionException() {

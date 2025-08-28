@@ -1,5 +1,6 @@
+package scribbles.task;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class DeadlineTask extends Task {
     private final String LABEL = "D";
