@@ -2,27 +2,30 @@ package scribbles.task;
 
 import java.time.LocalDateTime;
 
+import scribbles.parser.Parser;
+
 public class DeadlineTask extends Task {
     private final String LABEL = "D";
     private final LocalDateTime by;
 
-    public DeadlineTask(String desc, String by) {
+    public DeadlineTask(String desc, LocalDateTime by) {
         super(desc);
-        this.by = LocalDateTime.parse(by, INPUT_FORMAT);
+        this.by = by;
     }
 
-    public DeadlineTask(String desc, String by, boolean isDone) {
+    public DeadlineTask(String desc, LocalDateTime by, boolean isDone) {
         super(desc, isDone);
-        this.by = LocalDateTime.parse(by, INPUT_FORMAT);
+        this.by = by;
     }
 
     private String getBy() {
-        return "(by: %s)".formatted(this.by.format(PRINT_FORMAT));
+        return "(by: %s)".formatted(this.by.format(Parser.PRINT_FORMAT));
     }
 
     @Override
     public String encode() {
-        return "%s | %s | %s".formatted(LABEL, super.encode(), this.by.format(INPUT_FORMAT));
+        return "%s | %s | %s".formatted(LABEL, super.encode()
+                , this.by.format(Parser.INPUT_FORMAT));
     }
 
     @Override
