@@ -92,6 +92,10 @@ public class Parser {
     }
 
     private static Command parseDeadline(String args) throws ScribblesException {
+        if (args.startsWith("/by")) {
+            throw new MissingDescriptionException();
+        }
+
         if (!args.contains(" /by ")) {
             throw new InvalidParamException("/by");
         }
@@ -107,6 +111,10 @@ public class Parser {
     }
 
     private static Command parseEvent(String args) throws ScribblesException {
+        if (args.startsWith("/from")) {
+            throw new MissingDescriptionException();
+        }
+
         if (!args.contains(" /from ") || !args.contains(" /to ")) {
             throw new InvalidParamException("/from", "/to");
         }
