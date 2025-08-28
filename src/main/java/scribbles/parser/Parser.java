@@ -21,11 +21,22 @@ import scribbles.exception.MissingDescriptionException;
 import scribbles.exception.ScribblesException;
 import scribbles.exception.WrongParamOrderException;
 
+/**
+ * Provides a handle to parse user input commands.
+ */
 public class Parser {
 
     public static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
     public static final DateTimeFormatter PRINT_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma");
 
+    /**
+     * Parses user input into appropriate commands that
+     * are to be executed.
+     *
+     * @param userCommand User input command to parse.
+     * @return Crafted command to be executed anytime.
+     * @throws ScribblesException When parsing error occurs.
+     */
     public static Command parseCommand(String userCommand) throws ScribblesException {
         String[] tokens = userCommand.trim().split(" ", 2);
         String cmd = tokens[0].toLowerCase();
@@ -53,6 +64,7 @@ public class Parser {
         }
     }
 
+    // Helper parse methods for index-based commands
     private static Command parseMark(String args) throws ScribblesException {
         int index = Parser.parseIndex(args);
         return new MarkCommand(index);
@@ -68,6 +80,7 @@ public class Parser {
         return new DeleteCommand(index);
     }
 
+    // Shared helper method for mark, unmark, and delete commands
     private static int parseIndex(String args) throws ScribblesException {
         if (args.isEmpty()) {
             throw new MissingArgumentException();
@@ -84,6 +97,7 @@ public class Parser {
         }
     }
 
+    // Helper parse methods for task-based commands
     private static Command parseToDo(String args) throws ScribblesException {
         if (args.isEmpty()) {
             throw new MissingDescriptionException();
@@ -140,6 +154,13 @@ public class Parser {
         return new AddEventCommand(desc, from, to);
     }
 
+    /**
+     * Parses string dateTime into LocalDateTime format.
+     *
+     * @param dateTime dateTime in String format.
+     * @return dateTime in LocalDateTime format.
+     * @throws ScribblesException When dateTime format is wrong.
+     */
     public static LocalDateTime parseDateTime(String dateTime) throws ScribblesException {
         try {
             return LocalDateTime.parse(dateTime, INPUT_FORMAT);
