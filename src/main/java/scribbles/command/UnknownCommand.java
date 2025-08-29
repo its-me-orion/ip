@@ -1,10 +1,10 @@
 package scribbles.command;
 
+import scribbles.Scribbles;
 import scribbles.exception.ScribblesException;
 import scribbles.exception.UnknownCommandException;
 import scribbles.storage.Storage;
 import scribbles.tasklist.TaskList;
-import scribbles.Scribbles;
 
 public class UnknownCommand extends Command {
     private final String cmd;

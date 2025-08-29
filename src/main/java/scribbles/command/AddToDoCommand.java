@@ -1,8 +1,8 @@
 package scribbles.command;
 
+import scribbles.Scribbles;
 import scribbles.storage.Storage;
 import scribbles.tasklist.TaskList;
-import scribbles.Scribbles;
 import scribbles.ui.Ui;
 
 public class AddToDoCommand extends Command {
