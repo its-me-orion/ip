@@ -20,7 +20,7 @@ public abstract class Task {
 
     // Reused and inspired from Partial Solution provided for Level-3 requirements
     public String getStatusIcon() {
-        return (isDone ? "[X]" : "[ ]");  // mark done task with X
+        return (isDone ? "[X]" : "[ ]"); // mark done task with X
     }
 
     public void mark() {

@@ -19,7 +19,7 @@ public class DeleteCommand extends Command {
         try {
             Task task = taskList.deleteTask(index);
             storage.saveFile(taskList);
-            Ui.echo (
+            Ui.echo(
                     "Orkay! I have banished this task from existence:",
                     "  %s".formatted(task.toString()),
                     "You now have %s task(s) remaining! ^_^".formatted(taskList.size())
