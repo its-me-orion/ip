@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import scribbles.parser.Parser;
 
 public class EventTask extends Task {
-    private final String LABEL = "E";
+    private static final String LABEL = "E";
     private final LocalDateTime from;
     private final LocalDateTime to;
 

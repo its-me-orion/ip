@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import scribbles.parser.Parser;
 
 public class DeadlineTask extends Task {
-    private final String LABEL = "D";
+    private static final String LABEL = "D";
     private final LocalDateTime by;
 
     public DeadlineTask(String desc, LocalDateTime by) {

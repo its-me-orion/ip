@@ -1,7 +1,7 @@
 package scribbles.task;
 
 public class ToDoTask extends Task {
-    private final String LABEL = "T";
+    private static final String LABEL = "T";
 
     public ToDoTask(String desc) {
         super(desc);
