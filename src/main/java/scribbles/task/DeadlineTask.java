@@ -24,8 +24,8 @@ public class DeadlineTask extends Task {
 
     @Override
     public String encode() {
-        return "%s | %s | %s".formatted(LABEL, super.encode()
-                , this.by.format(Parser.INPUT_FORMAT));
+        return "%s | %s | %s".formatted(LABEL, super.encode(),
+                this.by.format(Parser.INPUT_FORMAT));
     }
 
     @Override

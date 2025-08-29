@@ -22,14 +22,14 @@ public class EventTask extends Task {
     }
 
     private String getFromTo() {
-        return "(from: %s to: %s)".formatted(this.from.format(Parser.PRINT_FORMAT)
-                , this.to.format(Parser.PRINT_FORMAT));
+        return "(from: %s to: %s)".formatted(this.from.format(Parser.PRINT_FORMAT),
+                this.to.format(Parser.PRINT_FORMAT));
     }
 
     @Override
     public String encode() {
-        return "%s | %s | %s | %s".formatted(LABEL, super.encode()
-                , this.from.format(Parser.INPUT_FORMAT), this.to.format(Parser.INPUT_FORMAT));
+        return "%s | %s | %s | %s".formatted(LABEL, super.encode(),
+                this.from.format(Parser.INPUT_FORMAT), this.to.format(Parser.INPUT_FORMAT));
     }
 
     @Override
