@@ -9,8 +9,14 @@ import scribbles.tasklist.TaskList;
 import scribbles.Scribbles;
 import scribbles.ui.Ui;
 
+/**
+ * Provides the command logic to list all tasks in taskList.
+ */
 public class ListCommand extends Command {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void execute(Scribbles scribbles, TaskList taskList, Storage storage) {
         if (taskList.size() == 0) {

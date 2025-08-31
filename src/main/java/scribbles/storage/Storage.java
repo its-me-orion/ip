@@ -17,23 +17,41 @@ import scribbles.task.Task;
 import scribbles.task.ToDoTask;
 import scribbles.tasklist.TaskList;
 
+/**
+ * Provides a handle to manage storage for data in taskList.
+ */
 public class Storage {
     private final String FILE_NAME;
     private final String DIRECTORY;
     private final String FILE_PATH;
 
+    /**
+     * Constructs default storage path and filename.
+     */
     public Storage() {
         this.FILE_NAME = "ScribblesData.txt";
         this.DIRECTORY = "./data/";
         this.FILE_PATH = DIRECTORY + FILE_NAME;
     }
 
+    /**
+     * Constructs specified storage path and filename.
+     *
+     * @param filename Filename of storage.
+     * @param dir Directory to store the file.
+     */
     public Storage(String filename, String dir) {
         this.FILE_NAME = filename;
         this.DIRECTORY = dir;
         this.FILE_PATH = DIRECTORY + FILE_NAME;
     }
 
+    /**
+     * Loads taskList data from storage file.
+     *
+     * @return A list of task data from file.
+     * @throws ScribblesException If file not found or encountering error when loading.
+     */
     public ArrayList<Task> loadFile() throws ScribblesException {
         ArrayList<Task> tasks = new ArrayList<Task>();
         File file = new File(FILE_PATH);
@@ -67,6 +85,11 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves task data from taskList into storage file.
+     *
+     * @param taskList taskList that contains the task data.
+     */
     public void saveFile(TaskList taskList) {
         List<Task> tasks = taskList.getTaskList();
         try {
@@ -80,6 +103,7 @@ public class Storage {
         }
     }
 
+    // Helper method to decode task data when loading file
     private Task decodeTask(String taskData) {
         String[] tokens = taskData.split(" \\| ");
         try {
