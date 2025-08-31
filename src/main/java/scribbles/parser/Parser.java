@@ -10,6 +10,7 @@ import scribbles.command.AddToDoCommand;
 import scribbles.command.Command;
 import scribbles.command.DeleteCommand;
 import scribbles.command.ExitCommand;
+import scribbles.command.FindCommand;
 import scribbles.command.ListCommand;
 import scribbles.command.MarkCommand;
 import scribbles.command.UnknownCommand;
@@ -59,6 +60,8 @@ public class Parser {
             return parseDeadline(args);
         case "event":
             return parseEvent(args);
+        case "find":
+            return parseFind(args);
         default:
             return new UnknownCommand(cmd);
         }
@@ -152,6 +155,13 @@ public class Parser {
         LocalDateTime to = Parser.parseDateTime(fromTo[1]);
 
         return new AddEventCommand(desc, from, to);
+    }
+
+    private static Command parseFind(String args) throws ScribblesException {
+        if (args.isEmpty()) {
+            throw new MissingDescriptionException();
+        }
+        return new FindCommand(args);
     }
 
     /**
