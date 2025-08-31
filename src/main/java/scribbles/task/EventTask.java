@@ -8,7 +8,7 @@ import scribbles.parser.Parser;
  * Provides the properties of an event task.
  */
 public class EventTask extends Task {
-    private final String LABEL = "E";
+    private static final String LABEL = "E";
     private final LocalDateTime from;
     private final LocalDateTime to;
 
@@ -41,8 +41,8 @@ public class EventTask extends Task {
     }
 
     private String getFromTo() {
-        return "(from: %s to: %s)".formatted(this.from.format(Parser.PRINT_FORMAT)
-                , this.to.format(Parser.PRINT_FORMAT));
+        return "(from: %s to: %s)".formatted(this.from.format(Parser.PRINT_FORMAT),
+                this.to.format(Parser.PRINT_FORMAT));
     }
 
     /**
@@ -50,8 +50,8 @@ public class EventTask extends Task {
      */
     @Override
     public String encode() {
-        return "%s | %s | %s | %s".formatted(LABEL, super.encode()
-                , this.from.format(Parser.INPUT_FORMAT), this.to.format(Parser.INPUT_FORMAT));
+        return "%s | %s | %s | %s".formatted(LABEL, super.encode(),
+                this.from.format(Parser.INPUT_FORMAT), this.to.format(Parser.INPUT_FORMAT));
     }
 
     @Override

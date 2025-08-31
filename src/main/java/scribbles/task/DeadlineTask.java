@@ -8,7 +8,7 @@ import scribbles.parser.Parser;
  * Provides the properties of a deadline task.
  */
 public class DeadlineTask extends Task {
-    private final String LABEL = "D";
+    private static final String LABEL = "D";
     private final LocalDateTime by;
 
     /**
@@ -44,8 +44,8 @@ public class DeadlineTask extends Task {
      */
     @Override
     public String encode() {
-        return "%s | %s | %s".formatted(LABEL, super.encode()
-                , this.by.format(Parser.INPUT_FORMAT));
+        return "%s | %s | %s".formatted(LABEL, super.encode(),
+                this.by.format(Parser.INPUT_FORMAT));
     }
 
     @Override

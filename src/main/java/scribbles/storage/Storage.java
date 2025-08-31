@@ -1,8 +1,8 @@
 package scribbles.storage;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,17 +21,17 @@ import scribbles.tasklist.TaskList;
  * Provides a handle to manage storage for data in taskList.
  */
 public class Storage {
-    private final String FILE_NAME;
-    private final String DIRECTORY;
-    private final String FILE_PATH;
+    private final String filename;
+    private final String directory;
+    private final String filepath;
 
     /**
      * Constructs default storage path and filename.
      */
     public Storage() {
-        this.FILE_NAME = "ScribblesData.txt";
-        this.DIRECTORY = "./data/";
-        this.FILE_PATH = DIRECTORY + FILE_NAME;
+        this.filename = "ScribblesData.txt";
+        this.directory = "./data/";
+        this.filepath = directory + filename;
     }
 
     /**
@@ -40,10 +40,10 @@ public class Storage {
      * @param filename Filename of storage.
      * @param dir Directory to store the file.
      */
-    public Storage(String filename, String dir) {
-        this.FILE_NAME = filename;
-        this.DIRECTORY = dir;
-        this.FILE_PATH = DIRECTORY + FILE_NAME;
+    public Storage(String filename, String directory) {
+        this.filename = filename;
+        this.directory = directory;
+        this.filepath = directory + filename;
     }
 
     /**
@@ -54,8 +54,8 @@ public class Storage {
      */
     public ArrayList<Task> loadFile() throws ScribblesException {
         ArrayList<Task> tasks = new ArrayList<Task>();
-        File file = new File(FILE_PATH);
-        File directory = new File(DIRECTORY);
+        File file = new File(this.filepath);
+        File directory = new File(this.directory);
 
         try {
             if (!directory.exists()) {
@@ -93,7 +93,7 @@ public class Storage {
     public void saveFile(TaskList taskList) {
         List<Task> tasks = taskList.getTaskList();
         try {
-            FileWriter fw = new FileWriter(FILE_PATH);
+            FileWriter fw = new FileWriter(this.filepath);
             for (Task task : tasks) {
                 fw.write(task.encode() + "\n");
             }

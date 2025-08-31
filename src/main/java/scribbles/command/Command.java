@@ -1,9 +1,9 @@
 package scribbles.command;
 
+import scribbles.Scribbles;
 import scribbles.exception.ScribblesException;
 import scribbles.storage.Storage;
 import scribbles.tasklist.TaskList;
-import scribbles.Scribbles;
 
 /**
  * Provides an abstract class for all types of Commands.

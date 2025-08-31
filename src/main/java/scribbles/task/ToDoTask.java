@@ -4,7 +4,7 @@ package scribbles.task;
  * Provides the properties of a to do task.
  */
 public class ToDoTask extends Task {
-    private final String LABEL = "T";
+    private static final String LABEL = "T";
 
     /**
      * Constructs a to do task.

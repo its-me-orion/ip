@@ -3,10 +3,10 @@ package scribbles.command;
 import java.util.ArrayList;
 import java.util.List;
 
+import scribbles.Scribbles;
 import scribbles.storage.Storage;
 import scribbles.task.Task;
 import scribbles.tasklist.TaskList;
-import scribbles.Scribbles;
 import scribbles.ui.Ui;
 
 /**

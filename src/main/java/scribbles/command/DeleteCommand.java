@@ -1,10 +1,10 @@
 package scribbles.command;
 
+import scribbles.Scribbles;
 import scribbles.exception.ScribblesException;
 import scribbles.storage.Storage;
 import scribbles.task.Task;
 import scribbles.tasklist.TaskList;
-import scribbles.Scribbles;
 import scribbles.ui.Ui;
 
 /**
@@ -30,7 +30,7 @@ public class DeleteCommand extends Command {
         try {
             Task task = taskList.deleteTask(index);
             storage.saveFile(taskList);
-            Ui.echo (
+            Ui.echo(
                     "Orkay! I have banished this task from existence:",
                     "  %s".formatted(task.toString()),
                     "You now have %s task(s) remaining! ^_^".formatted(taskList.size())
