@@ -1,7 +1,5 @@
 package scribbles.task;
 
-import java.time.format.DateTimeFormatter;
-
 /**
  * Provides an abstract class for all types of Tasks.
  */

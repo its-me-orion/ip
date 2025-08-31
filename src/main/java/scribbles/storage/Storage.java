@@ -38,7 +38,7 @@ public class Storage {
      * Constructs specified storage path and filename.
      *
      * @param filename Filename of storage.
-     * @param dir Directory to store the file.
+     * @param directory Directory to store the file.
      */
     public Storage(String filename, String directory) {
         this.filename = filename;
