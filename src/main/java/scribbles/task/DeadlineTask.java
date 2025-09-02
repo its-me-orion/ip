@@ -14,11 +14,11 @@ public class DeadlineTask extends Task {
     /**
      * Constructs a deadline task.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      * @param by Deadline of the task to complete by.
      */
-    public DeadlineTask(String desc, LocalDateTime by) {
-        super(desc);
+    public DeadlineTask(String description, LocalDateTime by) {
+        super(description);
         this.by = by;
     }
 
@@ -26,12 +26,12 @@ public class DeadlineTask extends Task {
      * Constructs a deadline task that is either
      * complete or incomplete.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      * @param by Deadline of the task to complete by.
      * @param isDone Whether the task is completed or not.
      */
-    public DeadlineTask(String desc, LocalDateTime by, boolean isDone) {
-        super(desc, isDone);
+    public DeadlineTask(String description, LocalDateTime by, boolean isDone) {
+        super(description, isDone);
         this.by = by;
     }
 

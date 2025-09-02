@@ -4,16 +4,16 @@ package scribbles.task;
  * Provides an abstract class for all types of Tasks.
  */
 public abstract class Task {
-    private final String desc;
+    private final String description;
     private boolean isDone;
 
     /**
      * Constructs an incomplete task with description.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      */
-    public Task(String desc) {
-        this.desc = desc;
+    public Task(String description) {
+        this.description = description;
         this.isDone = false;
     }
 
@@ -21,16 +21,16 @@ public abstract class Task {
      * Constructs a task with description that is either
      * complete or incomplete.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      * @param isDone Whether the task is completed or not.
      */
-    public Task(String desc, boolean isDone) {
-        this.desc = desc;
+    public Task(String description, boolean isDone) {
+        this.description = description;
         this.isDone = isDone;
     }
 
-    public String getDesc() {
-        return this.desc;
+    public String getDescription() {
+        return this.description;
     }
 
     // Reused and inspired from Partial Solution provided for Level-3 requirements
@@ -56,11 +56,11 @@ public abstract class Task {
      * Encodes the task for saving purposes.
      */
     public String encode() {
-        return "%s | %s".formatted((isDone ? "1" : "0"), this.desc);
+        return "%s | %s".formatted((isDone ? "1" : "0"), this.description);
     }
 
     @Override
     public String toString() {
-        return "%s %s".formatted(getStatusIcon(), this.desc);
+        return "%s %s".formatted(getStatusIcon(), this.description);
     }
 }

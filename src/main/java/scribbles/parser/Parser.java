@@ -40,10 +40,10 @@ public class Parser {
      */
     public static Command parseCommand(String userCommand) throws ScribblesException {
         String[] tokens = userCommand.trim().split(" ", 2);
-        String cmd = tokens[0].toLowerCase();
+        String command = tokens[0].toLowerCase();
         String args = tokens.length > 1 ? tokens[1] : "";
 
-        switch (cmd) {
+        switch (command) {
         case "bye":
             return new ExitCommand();
         case "list":
@@ -63,7 +63,7 @@ public class Parser {
         case "find":
             return parseFind(args);
         default:
-            return new UnknownCommand(cmd);
+            return new UnknownCommand(command);
         }
     }
 

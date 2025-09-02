@@ -15,12 +15,12 @@ public class EventTask extends Task {
     /**
      * Constructs an event task.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      * @param from Event dateTime of the task starting from.
      * @param to Event dateTime of the task ending to.
      */
-    public EventTask(String desc, LocalDateTime from, LocalDateTime to) {
-        super(desc);
+    public EventTask(String description, LocalDateTime from, LocalDateTime to) {
+        super(description);
         this.from = from;
         this.to = to;
     }
@@ -29,13 +29,13 @@ public class EventTask extends Task {
      * Constructs an event task that is either
      * complete or incomplete.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      * @param from Event dateTime of the task starting from.
      * @param to Event dateTime of the task ending to.
      * @param isDone Whether the task is completed or not.
      */
-    public EventTask(String desc, LocalDateTime from, LocalDateTime to, boolean isDone) {
-        super(desc, isDone);
+    public EventTask(String description, LocalDateTime from, LocalDateTime to, boolean isDone) {
+        super(description, isDone);
         this.from = from;
         this.to = to;
     }

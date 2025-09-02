@@ -38,42 +38,42 @@ public class TaskList {
     /**
      * Adds a to do task into the task list.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      */
-    public void addToDoTask(String desc) {
-        taskList.add(new ToDoTask(desc));
+    public void addToDoTask(String description) {
+        taskList.add(new ToDoTask(description));
     }
 
     /**
      * Adds a deadline task into the task list.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      * @param by Deadline of the task to complete by.
      */
-    public void addDeadlineTask(String desc, LocalDateTime by) {
-        taskList.add(new DeadlineTask(desc, by));
+    public void addDeadlineTask(String description, LocalDateTime by) {
+        taskList.add(new DeadlineTask(description, by));
     }
 
     /**
      * Adds an event task into the task list.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      * @param from Event dateTime of the task starting from.
      * @param to Event dateTime of the task ending to.
      */
-    public void addEventTask(String desc, LocalDateTime from, LocalDateTime to) {
-        taskList.add(new EventTask(desc, from, to));
+    public void addEventTask(String description, LocalDateTime from, LocalDateTime to) {
+        taskList.add(new EventTask(description, from, to));
     }
 
     /**
      * Marks a task as completed based on it's index
      * in the task list.
      *
-     * @param n Index of task in task list to mark.
+     * @param taskIndex Index of task in task list to mark.
      * @return Task that was marked.
      */
-    public Task markTask(int n) {
-        Task task = this.taskList.get(n);
+    public Task markTask(int taskIndex) {
+        Task task = this.taskList.get(taskIndex);
         task.mark();
         return task;
     }
@@ -82,11 +82,11 @@ public class TaskList {
      * Unmarks a task as completed based on it's index
      * in the task list.
      *
-     * @param n Index of task in task list to unmark.
+     * @param taskIndex Index of task in task list to unmark.
      * @return Task that was unmarked.
      */
-    public Task unmarkTask(int n) {
-        Task task = this.taskList.get(n);
+    public Task unmarkTask(int taskIndex) {
+        Task task = this.taskList.get(taskIndex);
         task.unmark();
         return task;
     }
@@ -95,12 +95,12 @@ public class TaskList {
      * Deletes a task as completed based on it's index
      * in the task list.
      *
-     * @param n Index of task in task list to delete.
+     * @param taskIndex Index of task in task list to delete.
      * @return Task that was deleted.
      */
-    public Task deleteTask(int n) {
-        Task task = this.taskList.get(n);
-        this.taskList.remove(n);
+    public Task deleteTask(int taskIndex) {
+        Task task = this.taskList.get(taskIndex);
+        this.taskList.remove(taskIndex);
         return task;
     }
 
@@ -108,11 +108,11 @@ public class TaskList {
      * Retrieves the task based on it's index
      * in the task list.
      *
-     * @param n Index of task in task list to retrieve.
+     * @param taskIndex Index of task in task list to retrieve.
      * @return Task to be retrieved.
      */
-    public Task get(int n) {
-        return this.taskList.get(n);
+    public Task get(int taskIndex) {
+        return this.taskList.get(taskIndex);
     }
 
     /**

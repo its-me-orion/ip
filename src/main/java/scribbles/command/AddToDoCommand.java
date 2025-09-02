@@ -9,15 +9,15 @@ import scribbles.ui.Ui;
  * Provides the command logic to add to do task.
  */
 public class AddToDoCommand extends Command {
-    private final String desc;
+    private final String description;
 
     /**
      * Constructs a command to add a to do task.
      *
-     * @param desc Description of the task to add.
+     * @param description Description of the task to add.
      */
-    public AddToDoCommand(String desc) {
-        this.desc = desc;
+    public AddToDoCommand(String description) {
+        this.description = description;
     }
 
     /**
@@ -25,8 +25,8 @@ public class AddToDoCommand extends Command {
      */
     @Override
     public void execute(Scribbles scribbles, TaskList taskList, Storage storage) {
-        taskList.addToDoTask(this.desc);
-        Ui.echo("I have added a todo task '%s' for you! :3".formatted(this.desc));
+        taskList.addToDoTask(this.description);
+        Ui.echo("I have added a todo task '%s' for you! :3".formatted(this.description));
         storage.saveFile(taskList);
     }
 }

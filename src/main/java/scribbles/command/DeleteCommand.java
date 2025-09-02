@@ -11,15 +11,15 @@ import scribbles.ui.Ui;
  * Provides the command logic to delete a specified task.
  */
 public class DeleteCommand extends Command {
-    private final int index;
+    private final int taskIndex;
 
     /**
      * Constructs a command to delete a specified task.
      *
-     * @param index Task index number to delete from taskList.
+     * @param taskIndex Task taskIndex number to delete from taskList.
      */
-    public DeleteCommand(int index) {
-        this.index = index;
+    public DeleteCommand(int taskIndex) {
+        this.taskIndex = taskIndex;
     }
 
     /**
@@ -28,7 +28,7 @@ public class DeleteCommand extends Command {
     @Override
     public void execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
         try {
-            Task task = taskList.deleteTask(index);
+            Task task = taskList.deleteTask(taskIndex);
             storage.saveFile(taskList);
             Ui.echo(
                     "Orkay! I have banished this task from existence:",

@@ -11,15 +11,15 @@ import scribbles.ui.Ui;
  * Provides the command logic to mark a specified task as completed.
  */
 public class MarkCommand extends Command {
-    private final int index;
+    private final int taskIndex;
 
     /**
      * Constructs a command to mark a specified task as completed.
      *
-     * @param index Task index number to mark from taskList.
+     * @param taskIndex Task index number to mark from taskList.
      */
-    public MarkCommand(int index) {
-        this.index = index;
+    public MarkCommand(int taskIndex) {
+        this.taskIndex = taskIndex;
     }
 
     /**
@@ -28,7 +28,7 @@ public class MarkCommand extends Command {
     @Override
     public void execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
         try {
-            Task task = taskList.markTask(index);
+            Task task = taskList.markTask(taskIndex);
             storage.saveFile(taskList);
             Ui.echo(
                     "Hoorah! I shall mark this task as completed! XD",

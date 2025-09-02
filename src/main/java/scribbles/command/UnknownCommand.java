@@ -10,15 +10,15 @@ import scribbles.tasklist.TaskList;
  * Provides the command logic when encountering an unknown command.
  */
 public class UnknownCommand extends Command {
-    private final String cmd;
+    private final String command;
 
     /**
      * Constructs a command to throw an UnknownCommandException.
      *
-     * @param cmd Unknown command given.
+     * @param command Unknown command given.
      */
-    public UnknownCommand(String cmd) {
-        this.cmd = cmd;
+    public UnknownCommand(String command) {
+        this.command = command;
     }
 
     /**
@@ -26,6 +26,6 @@ public class UnknownCommand extends Command {
      */
     @Override
     public void execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
-        throw new UnknownCommandException(cmd);
+        throw new UnknownCommandException(command);
     }
 }

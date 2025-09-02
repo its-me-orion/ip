@@ -11,15 +11,15 @@ import scribbles.ui.Ui;
  * Provides the command logic to unmark a specified task as completed.
  */
 public class UnmarkCommand extends Command {
-    private final int index;
+    private final int taskIndex;
 
     /**
      * Constructs a command to unmark a specified task as completed.
      *
-     * @param index Task index number to unmark from taskList.
+     * @param taskIndex Task index number to unmark from taskList.
      */
-    public UnmarkCommand(int index) {
-        this.index = index;
+    public UnmarkCommand(int taskIndex) {
+        this.taskIndex = taskIndex;
     }
 
     /**
@@ -28,7 +28,7 @@ public class UnmarkCommand extends Command {
     @Override
     public void execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
         try {
-            Task task = taskList.unmarkTask(index);
+            Task task = taskList.unmarkTask(taskIndex);
             storage.saveFile(taskList);
             Ui.echo(
                     "Aw man.. I shall unmark this task for you. D:",

@@ -9,21 +9,21 @@ public class ToDoTask extends Task {
     /**
      * Constructs a to do task.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      */
-    public ToDoTask(String desc) {
-        super(desc);
+    public ToDoTask(String description) {
+        super(description);
     }
 
     /**
      * Constructs a to do task that is either
      * complete or incomplete.
      *
-     * @param desc Description of the task.
+     * @param description Description of the task.
      * @param isDone Whether the task is completed or not.
      */
-    public ToDoTask(String desc, boolean isDone) {
-        super(desc, isDone);
+    public ToDoTask(String description, boolean isDone) {
+        super(description, isDone);
     }
 
     /**

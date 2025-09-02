@@ -33,7 +33,7 @@ public class FindCommand extends Command {
         List<String> filteredTasks = new ArrayList<>();
         for (int i = 0; i < taskList.size(); i++) {
             Task task = taskList.get(i);
-            if (task.getDesc().toLowerCase().contains(this.findStr)) {
+            if (task.getDescription().toLowerCase().contains(this.findStr)) {
                 filteredTasks.add("    %s. %s".formatted(filteredTasks.size() + 1, task));
             }
         }
