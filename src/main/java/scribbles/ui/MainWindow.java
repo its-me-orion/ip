@@ -38,7 +38,7 @@ public class MainWindow extends AnchorPane {
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
         dialogContainer.getChildren().add(
-                DialogBox.getScribblesDialog(Ui.WELCOME_MSG, scribblesImage)
+                DialogBox.getScribblesDialog(Ui.getWelcomeMsg(), scribblesImage)
         );
     }
 

@@ -13,12 +13,12 @@ import scribbles.tasklist.TaskList;
  */
 public class Ui {
 
-    public static final String WELCOME_MSG = """
+    private static final String WELCOME_MSG = """
             Heya! I'm Scribbles, your personal task assistant!
             I am made out of scribbles! >w<
             What can I do for you? :)
             """;
-    public static final String EXIT_MSG = "Bai bai! See you next time! :D";
+    private static final String EXIT_MSG = "Bai bai! See you next time! :D";
     private static final String LINE = "    <----------------------------------------------->";
     private static final String INPUT_PREFIX = "> ";
     private static final Scanner scanner = new Scanner(System.in);
@@ -58,17 +58,21 @@ public class Ui {
     }
 
     /**
-     * Prints the welcome message.
+     * Retrieves welcome message
+     *
+     * @return the welcome message.
      */
-    public static void displayWelcomeMsg() {
-        System.out.println(Ui.WELCOME_MSG);
+    public static String getWelcomeMsg() {
+        return Ui.WELCOME_MSG;
     }
 
     /**
-     * Prints the goodbye message.
+     * Retrieves welcome message
+     *
+     * @return the goodbye message.
      */
-    public static void displayExitMsg() {
-        System.out.println(Ui.EXIT_MSG);
+    public static String getExitMsg() {
+        return Ui.EXIT_MSG;
     }
 
     /**

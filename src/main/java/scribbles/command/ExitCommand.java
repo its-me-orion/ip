@@ -18,6 +18,6 @@ public class ExitCommand extends Command {
     public String execute(Scribbles scribbles, TaskList taskList, Storage storage) {
         storage.saveFile(taskList);
         Main.exit();
-        return Ui.EXIT_MSG;
+        return Ui.getExitMsg();
     }
 }
