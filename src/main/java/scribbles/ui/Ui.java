@@ -13,17 +13,12 @@ import scribbles.tasklist.TaskList;
  */
 public class Ui {
 
-    private static final String WELCOME_MSG = """
-            .----------------------------------------------------.
-            | Heya! I'm Scribbles, your personal task assistant! |
-            | What can I do for you? :)                          |
-            '----------------------------------------------------'
+    public static final String WELCOME_MSG = """
+            Heya! I'm Scribbles, your personal task assistant!
+            I am made out of scribbles! >w<
+            What can I do for you? :)
             """;
-    private static final String EXIT_MSG = """
-            .----------------------------------------------------.
-            | Bai bai! See you next time! :D                     |
-            '----------------------------------------------------'
-            """;
+    public static final String EXIT_MSG = "Bai bai! See you next time! :D";
     private static final String LINE = "    <----------------------------------------------->";
     private static final String INPUT_PREFIX = "> ";
     private static final Scanner scanner = new Scanner(System.in);
