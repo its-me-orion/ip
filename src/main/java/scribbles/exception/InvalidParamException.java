@@ -1,7 +1,15 @@
 package scribbles.exception;
 
-// Error occurs when required params are not fulfilled either missing or wrong name
+/**
+ * Provides exception when receiving missing or invalid parameters
+ */
 public class InvalidParamException extends ScribblesException {
+
+    /**
+     * Formulates the error message based on the required parameters
+     *
+     * @param params The parameters required for the specific command
+     */
     public InvalidParamException(String... params) {
         super("Error: You need to include the following parameter(s) for this command: %s (._.)"
                 .formatted(String.join(", ", params)));
