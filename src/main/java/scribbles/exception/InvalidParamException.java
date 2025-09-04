@@ -11,7 +11,7 @@ public class InvalidParamException extends ScribblesException {
      * @param params The parameters required for the specific command
      */
     public InvalidParamException(String... params) {
-        super("Error: You need to include the following parameter(s) for this command: %s (._.)"
+        super("[!] You need to include the following parameter(s) for this command: %s (._.)"
                 .formatted(String.join(", ", params)));
     }
 }

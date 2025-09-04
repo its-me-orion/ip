@@ -5,6 +5,6 @@ package scribbles.exception;
  */
 public class MissingArgumentException extends ScribblesException {
     public MissingArgumentException() {
-        super("Error: Your command is missing certain arguments...");
+        super("[!] Your command is missing certain arguments...");
     }
 }

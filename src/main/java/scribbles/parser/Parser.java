@@ -92,11 +92,11 @@ public class Parser {
         try {
             int index = Integer.parseInt(args.trim());
             if (index <= 0) {
-                throw new ScribblesException("Index cannot be negative!!!");
+                throw new ScribblesException("[!] Index cannot be negative!!!");
             }
             return index - 1;
         } catch (NumberFormatException e) {
-            throw new ScribblesException("Argument needs to be an integer :/");
+            throw new ScribblesException("[!] Argument needs to be an integer :/");
         }
     }
 
