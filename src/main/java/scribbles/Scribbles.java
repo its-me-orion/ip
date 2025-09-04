@@ -53,8 +53,16 @@ public class Scribbles {
         }
         Ui.displayExitMsg();
     }
-
     public static void main(String[] args) {
         new Scribbles().run();
+    }
+
+    public String getResponse(String input) {
+        try {
+            Command c = Parser.parseCommand(input);
+            return c.execute(this, this.taskList, this.storage);
+        } catch (ScribblesException e) {
+            return e.getMessage();
+        }
     }
 }

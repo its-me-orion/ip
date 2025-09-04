@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import scribbles.Scribbles;
 import scribbles.storage.Storage;
 import scribbles.tasklist.TaskList;
-import scribbles.ui.Ui;
 
 /**
  * Provides the command logic to add an event task.
@@ -32,9 +31,10 @@ public class AddEventCommand extends Command {
      * {@inheritDoc}
      */
     @Override
-    public void execute(Scribbles scribbles, TaskList taskList, Storage storage) {
+    public String execute(Scribbles scribbles, TaskList taskList, Storage storage) {
         taskList.addEventTask(this.description, this.from, this.to);
-        Ui.echo("I have added an event task '%s' for you! :3".formatted(this.description));
         storage.saveFile(taskList);
+        return "I have added an event task '%s' for you! :3".formatted(this.description);
+
     }
 }

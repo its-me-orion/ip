@@ -17,8 +17,8 @@ public abstract class Command {
      * @param scribbles Instance of scribbles to operate on.
      * @param taskList Instance of taskList to operate on.
      * @param storage Instance of storage to operate on.
+     * @return Output when command is executed
      * @throws ScribblesException When encountering error during execution.
-     * @inheritDoc
      */
-    public abstract void execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException;
+    public abstract String execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException;
 }
