@@ -1,13 +1,9 @@
 package scribbles.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import scribbles.Scribbles;
 import scribbles.storage.Storage;
 import scribbles.task.Task;
 import scribbles.tasklist.TaskList;
-import scribbles.ui.Ui;
 
 /**
  * Provides the command logic to find tasks based on keyword.
@@ -29,18 +25,20 @@ public class FindCommand extends Command {
      * {@inheritDoc}
      */
     @Override
-    public void execute(Scribbles scribbles, TaskList taskList, Storage storage) {
-        List<String> filteredTasks = new ArrayList<>();
+    public String execute(Scribbles scribbles, TaskList taskList, Storage storage) {
+        StringBuilder filteredTasks = new StringBuilder();
+        int taskNum = 0;
         for (int i = 0; i < taskList.size(); i++) {
             Task task = taskList.get(i);
             if (task.getDescription().toLowerCase().contains(this.findStr)) {
-                filteredTasks.add("    %s. %s".formatted(filteredTasks.size() + 1, task));
+                taskNum += 1;
+                filteredTasks.append("    %s. %s\n".formatted(taskNum, task));
             }
         }
         if (filteredTasks.isEmpty()) {
-            Ui.echo("I can't find any task with '%s' in it.. -.-".formatted(this.findStr));
+            return "I can't find any task with '%s' in it.. -.-".formatted(this.findStr);
         } else {
-            Ui.echo(filteredTasks);
+            return filteredTasks.toString();
         }
     }
 }

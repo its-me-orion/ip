@@ -25,7 +25,7 @@ public class UnknownCommand extends Command {
      * {@inheritDoc}
      */
     @Override
-    public void execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
+    public String execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
         throw new UnknownCommandException(command);
     }
 }

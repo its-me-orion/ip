@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import scribbles.Scribbles;
 import scribbles.storage.Storage;
 import scribbles.tasklist.TaskList;
-import scribbles.ui.Ui;
 
 /**
  * Provides the command logic to add a deadline task.
@@ -29,9 +28,9 @@ public class AddDeadlineCommand extends Command {
      * {@inheritDoc}
      */
     @Override
-    public void execute(Scribbles scribbles, TaskList taskList, Storage storage) {
+    public String execute(Scribbles scribbles, TaskList taskList, Storage storage) {
         taskList.addDeadlineTask(this.description, this.by);
-        Ui.echo("I have added a deadline task '%s' for you! :3".formatted(this.description));
         storage.saveFile(taskList);
+        return "I have added a deadline task '%s' for you! :3".formatted(this.description);
     }
 }
