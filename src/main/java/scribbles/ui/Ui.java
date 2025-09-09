@@ -1,13 +1,5 @@
 package scribbles.ui;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-
-import scribbles.task.Task;
-import scribbles.tasklist.TaskList;
-
 /**
  * Provides the UI elements and printing of Scribbles
  */
@@ -20,18 +12,6 @@ public class Ui {
             """;
     private static final String EXIT_MSG = "Bai bai! See you next time! :D";
     private static final String LINE = "    <----------------------------------------------->";
-    private static final String INPUT_PREFIX = "> ";
-    private static final Scanner scanner = new Scanner(System.in);
-
-    /**
-     * Echoes string(s) and encapsulate them
-     * between horizontal lines.
-     *
-     * @param lines String(s) to be echoed.
-     */
-    public static void echo(String... lines) {
-        Ui.echo(Arrays.asList(lines));
-    }
 
     /**
      * Echoes a list of strings and encapsulate them
@@ -39,22 +19,12 @@ public class Ui {
      *
      * @param lines List of strings to be echoed.
      */
-    public static void echo(List<String> lines) {
+    public static void echo(String... lines) {
         System.out.println(LINE);
         for (String line : lines) {
             System.out.printf("    %s%n", line);
         }
         System.out.println(LINE);
-    }
-
-    /**
-     * Reads in user's input.
-     *
-     * @return User's input in String format.
-     */
-    public static String readCommand() {
-        System.out.print(INPUT_PREFIX);
-        return scanner.nextLine();
     }
 
     /**
@@ -67,26 +37,12 @@ public class Ui {
     }
 
     /**
-     * Retrieves welcome message
+     * Retrieves exit message
      *
-     * @return the goodbye message.
+     * @return the exit message.
      */
     public static String getExitMsg() {
         return Ui.EXIT_MSG;
-    }
-
-    /**
-     * Prints the list of tasks in task list.
-     *
-     * @param taskList Task list to print the tasks from.
-     */
-    public static void displayList(TaskList taskList) {
-        List<Task> taskListData = taskList.getTaskList();
-        List<String> tasks = new ArrayList<>();
-        for (int i = 0; i < taskListData.size(); i++) {
-            tasks.add("%d. %s".formatted(i + 1, taskListData.get(i).toString()));
-        }
-        Ui.echo(tasks);
     }
 
     /**

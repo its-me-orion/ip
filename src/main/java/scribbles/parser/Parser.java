@@ -118,7 +118,9 @@ public class Parser {
         }
 
         String[] descAndBy = args.split(" /by ", 2);
-        if (descAndBy.length < 2 || descAndBy[0].trim().isEmpty()) {
+        boolean isMissingDescription = descAndBy.length < 2;
+        boolean isEmptyDescription = descAndBy[0].trim().isEmpty();
+        if (isMissingDescription || isEmptyDescription) {
             throw new MissingDescriptionException();
         }
 

@@ -17,7 +17,7 @@ import scribbles.ui.MainWindow;
 public class Main extends Application {
 
     private static Stage stage;
-    private Scribbles scribbles = new Scribbles();
+    private final Scribbles scribbles = new Scribbles();
 
     @Override
     public void start(Stage stage) {

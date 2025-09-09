@@ -54,14 +54,13 @@ public class Storage {
      */
     public ArrayList<Task> loadFile() throws ScribblesException {
         ArrayList<Task> tasks = new ArrayList<Task>();
-        File file = new File(this.filepath);
-        File directory = new File(this.directory);
-
         try {
+            File directory = new File(this.directory);
             if (!directory.exists()) {
                 directory.mkdirs();
             }
 
+            File file = new File(this.filepath);
             if (!file.exists()) {
                 file.createNewFile();
                 return tasks;
@@ -76,6 +75,7 @@ public class Storage {
                 }
             }
             sc.close();
+
         } catch (FileNotFoundException e) {
             throw new ScribblesException("scribbles.Scribbles data not found: " + e.getMessage());
         } catch (IOException e) {
@@ -109,28 +109,28 @@ public class Storage {
         try {
             String taskType = tokens[0];
             boolean isDone = tokens[1].equals("1");
-            String desc = tokens[2];
+            String description = tokens[2];
 
             switch (taskType) {
             case "T":
-                return new ToDoTask(desc, isDone);
+                return new ToDoTask(description, isDone);
             case "D":
                 LocalDateTime by = Parser.parseDateTime(tokens[3]);
-                return new DeadlineTask(desc, by, isDone);
+                return new DeadlineTask(description, by, isDone);
             case "E":
                 LocalDateTime from = Parser.parseDateTime(tokens[3]);
                 LocalDateTime to = Parser.parseDateTime(tokens[4]);
-                return new EventTask(desc, from, to, isDone);
+                return new EventTask(description, from, to, isDone);
             default:
-                return null;
+                throw new ScribblesException("Invalid task type");
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("A task data is found to be corrupted from save: " + e.getMessage());
             System.out.println("Skipped loading that task");
-            return null;
         } catch (Exception e) {
             System.out.println("Unknown data found: " + e.getMessage());
-            return null;
         }
+
+        return null;
     }
 }
