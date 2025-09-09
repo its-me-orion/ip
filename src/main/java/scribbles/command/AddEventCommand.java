@@ -1,7 +1,5 @@
 package scribbles.command;
 
-import static scribbles.parser.Parser.parseDateTime;
-
 import java.time.LocalDateTime;
 
 import scribbles.Scribbles;
