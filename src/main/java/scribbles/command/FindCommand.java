@@ -30,11 +30,13 @@ public class FindCommand extends Command {
         int taskNum = 0;
         for (int i = 0; i < taskList.size(); i++) {
             Task task = taskList.get(i);
-            if (task.getDescription().toLowerCase().contains(this.findStr)) {
+            boolean isContainedInTask = task.getDescription().toLowerCase().contains(this.findStr);
+            if (isContainedInTask) {
                 taskNum += 1;
                 filteredTasks.append("    %s. %s\n".formatted(taskNum, task));
             }
         }
+
         if (filteredTasks.isEmpty()) {
             return "I can't find any task with '%s' in it.. -.-".formatted(this.findStr);
         } else {

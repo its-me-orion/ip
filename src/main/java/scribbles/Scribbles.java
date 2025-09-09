@@ -12,7 +12,7 @@ import scribbles.ui.Ui;
  */
 public class Scribbles {
 
-    private Storage storage;
+    private final Storage storage;
     private TaskList taskList;
 
     /**

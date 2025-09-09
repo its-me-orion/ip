@@ -42,7 +42,9 @@ public class MainWindow extends AnchorPane {
         );
     }
 
-    /** Injects the Scribbles instance */
+    /**
+     * Injects the Scribbles instance
+     */
     public void setScribbles(Scribbles scribbles) {
         this.scribbles = scribbles;
     }
