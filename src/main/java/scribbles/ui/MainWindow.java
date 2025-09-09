@@ -56,6 +56,7 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = scribbles.getResponse(input);
+        assert(!response.isEmpty());
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getScribblesDialog(response, scribblesImage)

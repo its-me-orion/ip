@@ -29,6 +29,7 @@ public class AddDeadlineCommand extends Command {
      */
     @Override
     public String execute(Scribbles scribbles, TaskList taskList, Storage storage) {
+        assert(!this.description.isEmpty());
         taskList.addDeadlineTask(this.description, this.by);
         storage.saveFile(taskList);
         return "I have added a deadline task '%s' for you! :3".formatted(this.description);

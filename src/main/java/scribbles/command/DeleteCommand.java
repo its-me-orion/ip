@@ -28,6 +28,7 @@ public class DeleteCommand extends Command {
     public String execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
         try {
             Task task = taskList.deleteTask(taskIndex);
+            taskList.assertValidTaskIndex(taskIndex);
             storage.saveFile(taskList);
             return """
                     Orkay! I have banished this task from existence:
