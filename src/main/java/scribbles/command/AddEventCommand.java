@@ -1,5 +1,7 @@
 package scribbles.command;
 
+import static scribbles.parser.Parser.parseDateTime;
+
 import java.time.LocalDateTime;
 
 import scribbles.Scribbles;
@@ -32,6 +34,7 @@ public class AddEventCommand extends Command {
      */
     @Override
     public String execute(Scribbles scribbles, TaskList taskList, Storage storage) {
+        assert(!this.description.isEmpty());
         taskList.addEventTask(this.description, this.from, this.to);
         storage.saveFile(taskList);
         return "I have added an event task '%s' for you! :3".formatted(this.description);

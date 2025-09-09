@@ -28,6 +28,7 @@ public class MarkCommand extends Command {
     public String execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
         try {
             Task task = taskList.markTask(taskIndex);
+            taskList.assertValidTaskIndex(taskIndex);
             storage.saveFile(taskList);
             return """
                     Hoorah! I shall mark this task as completed! XD

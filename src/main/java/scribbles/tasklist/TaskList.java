@@ -123,4 +123,12 @@ public class TaskList {
     public int size() {
         return this.taskList.size();
     }
+
+    /**
+     * Asserts taskIndex is within 0 to length of taskList - 1
+     */
+    public void assertValidTaskIndex(int taskIndex) {
+        assert(taskIndex >= 0);
+        assert(taskIndex <= taskList.size() - 1);
+    }
 }

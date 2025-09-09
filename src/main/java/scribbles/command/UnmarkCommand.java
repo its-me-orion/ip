@@ -28,6 +28,7 @@ public class UnmarkCommand extends Command {
     public String execute(Scribbles scribbles, TaskList taskList, Storage storage) throws ScribblesException {
         try {
             Task task = taskList.unmarkTask(taskIndex);
+            taskList.assertValidTaskIndex(taskIndex);
             storage.saveFile(taskList);
             return """
                     Aw man.. I shall unmark this task for you. D:

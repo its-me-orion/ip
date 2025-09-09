@@ -31,7 +31,9 @@ public class Scribbles {
     public String getResponse(String input) {
         try {
             Command c = Parser.parseCommand(input);
-            return c.execute(this, this.taskList, this.storage);
+            String commandOutput = c.execute(this, this.taskList, this.storage);
+            assert (!commandOutput.isEmpty());
+            return commandOutput;
         } catch (ScribblesException e) {
             return e.getMessage();
         }
