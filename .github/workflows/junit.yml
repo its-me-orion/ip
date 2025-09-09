@@ -1,4 +1,4 @@
-name: CI with JUnit Tests
+name: JUnit Tests CI
 
 on: [push, pull_request]
 
