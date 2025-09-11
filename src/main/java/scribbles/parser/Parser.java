@@ -11,6 +11,7 @@ import scribbles.command.Command;
 import scribbles.command.DeleteCommand;
 import scribbles.command.ExitCommand;
 import scribbles.command.FindCommand;
+import scribbles.command.HelpCommand;
 import scribbles.command.ListCommand;
 import scribbles.command.MarkCommand;
 import scribbles.command.UnknownCommand;
@@ -62,6 +63,8 @@ public class Parser {
             return parseEvent(args);
         case "find":
             return parseFind(args);
+        case "help":
+            return new HelpCommand();
         default:
             return new UnknownCommand(command);
         }

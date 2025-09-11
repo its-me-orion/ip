@@ -10,6 +10,23 @@ import scribbles.tasklist.TaskList;
  */
 public abstract class Command {
 
+    private static final String[] COMMAND_LIST = {
+        "bye",
+        "list",
+        "mark",
+        "unmark",
+        "delete",
+        "todo",
+        "deadline",
+        "event",
+        "find",
+        "help"
+    };
+
+    public static String[] getCommandList() {
+        return COMMAND_LIST;
+    }
+
     /**
      * Executes the respective command based on given scribbles,
      * taskList, and storage.
