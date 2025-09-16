@@ -1,30 +1,75 @@
-# Scribbles User Guide
+# Scribbles User Guide 😃
 
-// Update the title above to match the actual product name
+Scribbles is your personal companion to help you organise your daily tasks!
+Scribbles is:
+- CLI-Based
+- Simple
+- ~Friendly~ **_SUPER FRIENDLY_** ❤️ ❤️
 
-// Product screenshot goes here
+![Screenshot of Scribbles App](https://its-me-orion.github.io/ip/Ui.png)
 
-// Product intro goes here
+## Requirements
+Ensure you have Java `17` or above installed in your Computer.
 
-## Adding deadlines
+**Mac users**: Ensure you have the precise JDK version prescribed here.
 
-// Describe the action and its outcome.
+## Installation Guide
+1. click the link [here](https://github.com/its-me-orion/ip/releases) and download the latest release `.jar` file
+2. Double-click the `.jar` file in your local computer
+3. Add your tasks with the `add` command
+4. List your tasks with the `list` command
+5. Watch it manage the task for you! 💯
 
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
-
-```
-expected output
-```
-
-## Feature ABC
-
-// Feature details
+## Commands
+> [!NOTE] Notes about command format:
+> Words in rounded brackets are parameters required to be supplied by the user to use the command
+> e.g. in `mark I(index)`, `index` is a parameter to mark a task as completed at that specific index
+> Parameters are prefixed with a character that represents the expected type of input:
+> I() represents that the parameter expects an `Integer`
+> S() represents that the parameter expects a `String`
+> D() represents that the parameter expects a valid `Date` format of `d/m/yyyy hhmm`
+> e.g. A valid date could be `19/5/2025 1900` which represents 19 May 2025 at 7:00pm
 
 
-## Feature XYZ
+### Viewing help: `help`
 
-// Feature details
+List down all possible commands that can be used
+
+### Adding a todo task: `todo`
+
+Format: `todo S(taskName)`
+Adds a todo task with the name `taskName`
+
+### Adding a task with a deadline: `deadline`
+
+Format: `deadline S(taskName) /by D(date)`
+Adds a deadline task with the name `taskName` to be completed by `date`
+
+### Adding an event task: `event`
+
+Format: `event S(eventName) /from D(fromDate) /to D(toDate)`
+Adds a event task with the name `eventName` that takes place from `fromDate` to `toDate`
+
+### Listing all tasks: `list`
+
+Format: `list`
+Lists all the tasks that was added and not deleted
+
+### Marking a task as complete: `mark`
+
+Format: `mark I(index)`
+Marks a task at the specified `index` number as completed
+
+### Unmarking a task as complete: `unmark`
+
+Format: `mark I(index)`
+Unmarks a task at the specified `index` number as completed
+
+### Finding a task: `find`
+
+Format: `find S(searchString)`
+Find and list all tasks that contains `searchString` in their name
+
+### Exiting the application: `bye`
+
+Exits the application after a few seconds
