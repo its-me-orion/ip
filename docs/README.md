@@ -23,12 +23,12 @@ Ensure you have Java `17` or above installed in your Computer.
 ## Commands
 > Notes about command format:  
 Words in rounded brackets are parameters required to be supplied by the user to use the command  
-e.g. in `mark I(index)`, `index` is a parameter to mark a task as completed at that specific index  
+&nbsp;&nbsp;&nbsp;&nbsp;e.g. in `mark I(index)`, `index` is a parameter to mark a task as completed at that specific index  
 Parameters are prefixed with a character that represents the expected type of input:  
 I() represents that the parameter expects an `Integer`  
 S() represents that the parameter expects a `String`  
 D() represents that the parameter expects a valid `Date` format of `d/m/yyyy hhmm`  
-e.g. A valid date could be `19/5/2025 1900` which represents 19 May 2025 at 7:00pm
+&nbsp;&nbsp;&nbsp;&nbsp;e.g. A valid date could be `19/5/2025 1900` which represents 19 May 2025 at 7:00pm
 
   
 ### Viewing help: `help`
@@ -62,7 +62,7 @@ Marks a task at the specified `index` number as completed
   
 ### Unmarking a task as complete: `unmark`
 
-Format: `mark I(index)`  
+Format: `unmark I(index)`  
 Unmarks a task at the specified `index` number as completed
   
 ### Finding a task: `find`
