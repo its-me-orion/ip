@@ -95,7 +95,7 @@ public class Parser {
         try {
             int index = Integer.parseInt(args.trim());
             if (index <= 0) {
-                throw new ScribblesException("[!] Index cannot be negative!!!");
+                throw new ScribblesException("[!] Index must be a positive number!!");
             }
             return index - 1;
         } catch (NumberFormatException e) {
