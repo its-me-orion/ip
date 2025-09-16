@@ -33,7 +33,7 @@ Parameters are prefixed with a character that represents the expected type of in
   
 ### Viewing help: `help`
 
-Format: `help`
+Format: `help`  
 List down all possible commands that can be used
   
 ### Adding a todo task: `todo`
@@ -73,5 +73,5 @@ Find and list all tasks that contains `searchString` in their name
   
 ### Exiting the application: `bye`
 
-Format: `bye`
+Format: `bye`  
 Exits the application after a few seconds
